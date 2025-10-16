@@ -1,5 +1,7 @@
 import appStyles from "./app-styles";
 import SearchBar from "../SearchBar/SearchBar";
+import SearchResults from "../SearchResults/SearchResults";
+import Playlist from "../Playlist/Playlist";
 
 function App() {
   return (
@@ -15,9 +17,10 @@ function App() {
       
       <SearchBar />
       
-      <section>
-
-      </section>
+      <article className={appStyles.article}>
+        <SearchResults />
+        <Playlist />
+      </article>
 
     </main>
   )
