@@ -1,18 +1,17 @@
 import Track from "../Track/Track";
 import tracklistStyles from "./tracklist-styles";
 
-function Tracklist() {
+function Tracklist(props) {
     return (
         <ul className={tracklistStyles.ul}>
-            <Track />
-            <Track />
-            <Track />
-            <Track />
-            <Track />
-            <Track />
-            <Track />
-            <Track />
-            <Track />
+            {props.tracks.map((track) => {
+                return (
+                    <Track 
+                        track={track}
+                        key={track.id}
+                    />
+                );
+            })}
         </ul>
     )
 };
