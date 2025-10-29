@@ -5,7 +5,7 @@ function SearchResults(props) {
     return (
         <section className={resultStyles.section}>
             <h2 className={resultStyles.h2}>RESULTS</h2>
-            <Tracklist tracks={props.results} />
+            <Tracklist tracks={props.results} onAdd={props.onAdd} />
         </section>
     );
 };
