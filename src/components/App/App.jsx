@@ -4,8 +4,10 @@ import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
 
+import Spotify from "../../utils/spotify";
+
 //Hardcoded Search Results Object
-const testResults = {
+/* const testResults = {
   tracks: {
     items: [
       {
@@ -68,10 +70,14 @@ const testResults = {
   }
 };
 
-const tracks = testResults.tracks.items;
+const tracks = testResults.tracks.items; */
 
 function App() {
-  const [results, setResults] = useState(tracks);
+  const [results, setResults] = useState([]);
+
+  const searchTracks = (term) => {
+    Spotify.searchTrack(term).then(setResults);
+  };
 
   const [playlistTracks, setPlaylistTracks] = useState([]);
   
@@ -96,7 +102,8 @@ function App() {
 
   const savePlaylist = () => {
     const trackURIs = playlistTracks.map((track) => track.uri);
-    alert(`Saving ${playlistName} inluded tracks: ${trackURIs}` )
+    Spotify.savePlaylist(playlistName, trackURIs)
+    console.log(trackURIs);
   };
 
   return (
@@ -110,7 +117,7 @@ function App() {
         </h1>
       </header>
       
-      <SearchBar />
+      <SearchBar onSearch={searchTracks} />
       
       <article className={appStyles.article}>
         <SearchResults results={results}  onAdd={addTrack} />

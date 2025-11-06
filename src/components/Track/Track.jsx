@@ -22,7 +22,7 @@ function Track(props) {
         <li className={trackStyles.li}>
             <div className={trackStyles.div}>
                 <h3 className={trackStyles.h3}>{props.track.name}</h3>
-                <p className={trackStyles.p}>{props.track.artists} | {props.track.album}</p>
+                <p className={trackStyles.p}>{props.track.artist} | {props.track.album}</p>
             </div>
             {renderButton()}
         </li>
